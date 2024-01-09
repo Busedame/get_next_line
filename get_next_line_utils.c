@@ -6,7 +6,7 @@
 /*   By: nholbroo <nholbroo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:23:12 by nholbroo          #+#    #+#             */
-/*   Updated: 2024/01/03 15:40:48 by nholbroo         ###   ########.fr       */
+/*   Updated: 2024/01/08 13:50:04 by nholbroo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	result = (char *)malloc(i + j + 1);
 	if (!result)
-	{
-		ft_free(s1);
 		return (ft_free(s2));
-	}
 	result = ft_strjoin_cat_part(s1, s2, result);
 	return (result);
 }

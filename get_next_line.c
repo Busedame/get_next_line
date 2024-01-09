@@ -6,7 +6,7 @@
 /*   By: nholbroo <nholbroo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:23:07 by nholbroo          #+#    #+#             */
-/*   Updated: 2024/01/03 16:41:01 by nholbroo         ###   ########.fr       */
+/*   Updated: 2024/01/08 14:00:35 by nholbroo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,11 @@ static char	*last_line(char *readnow)
 }
 
 /*The next_line-function is returning a string containing the bytes that
-was read AFTER the current line, so I can store them to next time function
-is called. If there are no bytes, the next time the function is called,
-the function will return NULL.*/
+was read AFTER the current line, so I can store them until the next time 
+the function is called. If there is no new-line, this function will return
+NULL - setting the remainder to NULL - meaning we reached the end of the
+file.*/
+
 static char	*next_line(char *readnow)
 {
 	int		bfrsize;
@@ -73,6 +75,7 @@ static char	*next_line(char *readnow)
 output, including the newline-character. Also handling the
 last line if there is no newline-character in the string passed to 
 the function.*/
+
 static char	*current_line(char *readnow)
 {
 	int		end;
@@ -96,7 +99,8 @@ static char	*current_line(char *readnow)
 }
 
 /*Reading through the file until it 
-contains a newline, or if the file has ended*/
+contains a newline, if the file has ended or an error occurs.*/
+
 static char	*read_file(char *remainder, int fd)
 {
 	char	*buffer;
