@@ -13,7 +13,7 @@ char	*get_next_line(int fd);
 `static variables` was a new (and crucial) concept to me while working with this project. To understand the concept of  
 static variables, I will give a short reminder of how stack and heap memory allocation works.
 
-#### Stack and heap memory
+### Stack and heap memory
 Allocating memory refers to the process of reserving a specific amount of memory for use in a program.
 When you allocate memory, you are essentially telling the system that you need a certain amount of memory 
 for your program to use. This memory can then be used to store data, such as variables or data structures.
@@ -45,7 +45,7 @@ void	example_heap(void)
 }
 ```
 
-#### Static variables
+### Static variables
 
 In `get_next_line()`, we want to read from a file, one line at a time.
 
