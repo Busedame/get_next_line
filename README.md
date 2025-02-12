@@ -43,7 +43,6 @@ void	example_heap(void)
 In `get_next_line()`, we want to read from a file, one line at a time.
 
 The function is structured in the following steps:
-```bash
 1. `get_next_line()` uses the `read()` function to read from the file. It reads
 `BUFFER_SIZE` bytes at a time (the size is defined in `get_next_line.h`), and
 stores the bytes in `buffer`.
@@ -105,7 +104,6 @@ appends "w are you?\n" to "Ho", and it returns the line "How are you?".
 ```bash
 	What is getting stored in the `readnow` variable on second get_next_line() call:
 	"How are you?\n"
-```
 ```
 
 An essential part of my implementation of `ft_printf()` is the `va_start()`, `va_arg()` and `va_end()` macros
