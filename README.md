@@ -10,7 +10,7 @@ The function is declared like this:
 char	*get_next_line(int fd);
 ```
 
-Let's take a file (test.txt) that contains this text:
+Let's say we have a file (test.txt) that contains this text:
 ```bash
 Hello, there!
 How are you today?
