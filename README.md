@@ -42,6 +42,8 @@ the end of file was reached.
 
 ---
 
+### Memory allocation
+
 `static variables` was a new (and crucial) concept to me while working with this project. To understand the concept of  
 static variables, I will give a short reminder of how stack and heap memory allocation works.
 
