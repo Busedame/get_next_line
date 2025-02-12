@@ -35,8 +35,11 @@ And we get this output:
 Hello, there!
 ```
 
-If we were to call `get_next_line()` again, the output would be "How are you today?",
-because this is the next line of the file.  
+If we were to call `get_next_line()` for the second time, the output would be this:
+```bash
+How are you today?
+```
+
 If we called it for the third time, `get_next_line()` would return `NULL`, because
 the end of file was reached.  
 
