@@ -6,7 +6,7 @@
 /*   By: nholbroo <nholbroo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:23:03 by nholbroo          #+#    #+#             */
-/*   Updated: 2024/01/08 13:59:32 by nholbroo         ###   ########.fr       */
+/*   Updated: 2025/02/12 19:20:52 by nholbroo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>
-// # include <fcntl.h>
-// # include <stdio.h>
+# include <fcntl.h>
+# include <stdio.h>
 
 char	*get_next_line(int fd);
 

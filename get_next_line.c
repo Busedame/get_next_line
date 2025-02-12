@@ -6,7 +6,7 @@
 /*   By: nholbroo <nholbroo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:23:07 by nholbroo          #+#    #+#             */
-/*   Updated: 2025/02/12 18:29:29 by nholbroo         ###   ########.fr       */
+/*   Updated: 2025/02/12 19:22:47 by nholbroo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,7 @@ char	*get_next_line(int fd)
 
 // 	i = 0;
 // 	fd = open("test.txt", O_RDONLY);
-// 	output = get_next_line(fd);
+// 	output = get_next_line(0);
 // 	while (output)
 // 	{
 // 		printf("%s", output);
