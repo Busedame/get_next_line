@@ -91,8 +91,7 @@ In `get_next_line()`, we want to read from a file, one line at a time.
 
 The function is structured in the following steps:
 1. `get_next_line()` uses the `read()` function to read from the file. It reads
-`BUFFER_SIZE` bytes at a time (the size is defined in `get_next_line.h`), and
-stores the bytes in `buffer`.
+`BUFFER_SIZE` bytes at a time and stores the bytes in `buffer`.
 ```bash
 	bytesread = read(fd, buffer, BUFFER_SIZE);
 ```
