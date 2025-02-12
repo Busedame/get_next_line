@@ -45,7 +45,7 @@ the end of file was reached.
 
 ---
 
-## So how does get_next_line() work?
+## 🔍So how does get_next_line() work?
 
 In order to understand how `get_next_line()` works, we need to wrap our
 heads around `static variables`. In this next part I will:
@@ -180,7 +180,7 @@ In this example, the output would be:
 
 This happens because **every time the function exits, the memory is deallocated.**
 `example_stack()` simply can't remember what the value of `x` used to be on the last call,
-because its memory is wiped out.
+because its memory is erased.
 Now, if we would instead declare a **static variable**, let's take a look at what would happen:
 ```bash
 void	example_static(void)
@@ -204,61 +204,37 @@ In this example, the output would be:
 	30
 ```
 Since the variable is now **static**, the memory address and value remains allocated until
-**the end of them program**. Now, this becomes very useful for our `get_next_line()`, where
-we want to store the **remainder** from our `read()` function, doesn't it?
+**the end of the program**. Now, this becomes very useful for our `get_next_line()`, where
+we want to store the **remainder** from our `read()` function, doesn't it? 😃  
 
-An essential part of my implementation of `ft_printf()` is the `va_start()`, `va_arg()` and `va_end()` macros
-from the `stdarg.h` library. They are used for handling variable argument lists in functions.
-- `va_start()` initializes a `va_list` variable to be used with `va_arg` and `va_end`. It must be called before accessing the variable arguments.
-- `va_arg()` retrieves the next argument in the list. The type of the expected argument needs to be specified.
-- `va_end()` cleans up the va_list when you are done with it. It should be called before the function returns.
-
-The `ft_printf()` function is declared like this:
-```bash
-int ft_printf(const char *, ...);
-```
-
-#### Arguments of `ft_printf()`  
-- `const char *` -- A string containing characters and/or type identifiers.  
-- `...` -- An undefined amount of arguments, with undefined types.  
-
-#### Return value of `ft_printf()`  
-The return value for `ft_printf()` is an `int`, indicating **how many characters were printed**.  
-It returns `-1` upon error.  
-
-`ft_printf()` writes to the standard output, and is limited to handling the following conversions:
-- `%c` Prints a single character.
-- `%s` Prints a string (as defined by the common C convention).
-- `%p` The void * pointer argument has to be printed in hexadecimal format.
-- `%d` Prints a decimal (base 10) number.
-- `%i` Prints an integer in base 10.
-- `%u` Prints an unsigned decimal (base 10) number.
-- `%x` Prints a number in hexadecimal (base 16) lowercase format.
-- `%X` Prints a number in hexadecimal (base 16) uppercase format.
-- `%%` Prints a percent sign.
-
-#### Understanding `va_start()` in `ft_printf()`
-The `const char *` is a string that can contain both text and type identifiers, like "%s", "%p", etc.  
-By using the function `va_start()`, the **type identifiers** in `const char *` gets connected to the **data** `...`, which is stored in a `va_list`.  
-- For example: `ft_printf("%i", 42);`  
-- In this example, `const char *` is `%i` and `...` is `42`.
-- What will be printed on the standard output: `42`.  
-
-#### Understanding `va_arg()` in `ft_printf()`
-The function `va_arg()` is used to iterate through the type identifiers and their respective data.  
-In `ft_printf()` -> whenever a type identifier is found in `const char *`, it gets connected to the next argument in `...`.  
-- For example: `ft_printf("Hello, world! My name is %s, and I am %i years old.\n", "Bob", 40);`  
-- In this example, `const char *` is `"Hello, world! My name is %s, and I am %i years old.\n"`, and `...` is `"Bob"` and `40`.
-- This essentially means that `%s` expands to `"Bob"`, and `%i` expands to `40`. 
-- What will be printed on the standard output: `"Hello, world! My name is Bob, and I am 40 years old."`.  
-
-#### Understanding `va_end()` in `ft_printf()`
-When `const char *` has reached the `'\0'`, meaning it has reached its end, `va_end()` is called to clean up the `va_list`.  
+Even though it would technically be possible to create a `get_next_line()` with a remainder
+allocated on the heap, this would require a different structure that would go beyond what is
+allowed by the subject.
 
 ---
 
+## 🚧**Limitations**
+`get_next_line()` is by no means perfect.  
+
+One big weakness with the function is the fact that it returns `NULL` both upon memory allocation failure, 
+and when `read()` has reached the end of file. This can be highly confusing.  
+Although the limitations of the subject made it impossible to handle it in a different way, these could
+have been possible solutions:
+- Solution 1: Return a struct instead of a pointer, containing information on what potentially went wrong.
+- Solution 2: Set an errno value to indicate error.  
+
+Another weakness is if you want to read only one line from a file, without caring about the rest. This
+would give `still reachable memory` if not handled, because of the remainder.  
+Even though `still reachables` are not technically considered a memory leak, it makes your `valgrind` report 
+ugly (in my opinion at least).  
+Here are some workarounds:
+- Solution 1: Call the function like this `get_next_line(-1)`, indicating an error with the file descriptor, forcing
+the remainder to be freed.
+- Solution 2: Calling `get_next_line()` in a loop until return value is `NULL`, indicating end of file.
+
+2. 
 ## 🧰 **Included Files**  
-- The `ft_printf.c` file containing the `ft_printf()` function, and the remaining `*.c` files containing all the printing functions for the different types.
+- `get_next_line.c` and `get_next_line_utils.c`
 - A `Makefile`.
 - A header file.
 
