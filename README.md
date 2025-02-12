@@ -114,7 +114,7 @@ appends "w are you?\n" to "Ho", and it returns the line "How are you?".
 	"How are you?\n"
 ```
 
-#### Now how does the static variable come into place?
+### **Now how does the static variable come into place?**
 
 As previously mentioned,**stack memory** gets deallocated once the function exits. 
 
