@@ -114,9 +114,9 @@ appends "w are you?\n" to "Ho", and it returns the line "How are you?".
 	"How are you?\n"
 ```
 
-**Now, how does the static variable come into place?**
+#### Now how does the static variable come into place?
 
-As previously mentioned, **stack memory** gets deallocated once the function exits. 
+As previously mentioned,**stack memory** gets deallocated once the function exits. 
 
 Let's do an example:
 ```bash
@@ -144,7 +144,7 @@ In this example, the output would be:
 This happens because **every time the function exits, the memory is deallocated.**
 Now, if we would instead declare a **static variable**, let's take a look at what would happen:
 ```bash
-void	example_stack(void)
+void	example_static(void)
 {
 	static int	x = 0;
 	x += 10;
@@ -153,9 +153,9 @@ void	example_stack(void)
 
 int	main()
 {
-	example_stack();
-	example_stack();
-	example_stack();
+	example_static();
+	example_static();
+	example_static();
 }
 ```
 In this example, the output would be:
