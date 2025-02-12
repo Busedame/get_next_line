@@ -17,7 +17,7 @@ There are two main ways of allocating memory, **stack and heap**.
 - The memory is automatically allocated (when the variable is declared) and deallocated (when the function exits).
 - It has a fixed size.
 ```bash
-void	example_1(void)
+void	example_stack(void)
 {
 	int	x = 42;
 }
@@ -29,7 +29,7 @@ void	example_1(void)
 - The memory can be accessed outside the function, as long as the address is stored in a pointer.
 - It is dynamic in size.
 ```bash
-void	example_2(void)
+void	example_heap(void)
 {
 	int	*x;
 	x = malloc(sizeof(int));
