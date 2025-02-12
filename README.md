@@ -138,6 +138,7 @@ because that is the first line.
 - The remainder in this case is "Ho", because this belongs to the next line.
 5. The `get_next_line()` function will return "Hello, there!\n" on the first call,
 and then store "Ho" for the next function call.  
+
 The next time `get_next_line()` is called:
 - It already has "Ho" from last function call.
 - It reads again using `read()`. 
