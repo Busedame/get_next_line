@@ -42,9 +42,9 @@ the end of file was reached.
 
 ---
 
-### Memory allocation
+## So how does get_next_line() work?
 
-`static variables` was a new (and crucial) concept to me while working with this project. To understand the concept of  
+Let's talk about `static variables`! This was a new (and crucial) concept to me while working with this project. To understand the concept of  
 static variables, I will give a short reminder of how stack and heap memory allocation works.
 
 ### Stack and heap memory
