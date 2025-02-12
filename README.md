@@ -16,7 +16,6 @@ There are two main ways of allocating memory, **stack and heap**.
 - Used for local variables within functions (they only exist within the function).
 - The memory is automatically allocated (when the variable is declared) and deallocated (when the function exits).
 - It has a fixed size.
-- Example:
 ```bash
 void	example_1(void)
 {
@@ -29,7 +28,6 @@ void	example_1(void)
 - The memory is manually allocated, and must be freed using the `free()` function.
 - The memory can be accessed outside the function, as long as the address is stored in a pointer.
 - It is dynamic in size.
-- Example:
 ```bash
 void	example_2(void)
 {
