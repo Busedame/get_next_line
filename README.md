@@ -47,8 +47,11 @@ the end of file was reached.
 
 ## So how does get_next_line() work?
 
-Let's talk about `static variables`! This was a new (and crucial) concept to me while working with this project. To understand the concept of  
-static variables, I will give a short reminder of how stack and heap memory allocation works.
+In order to understand how `get_next_line()` works, we need to wrap our
+heads around `static variables`. In this next part I will:
+1. Take you through the basics of stack and heap memory.
+2. Show you the main logic of `get_next_line()`.
+3. Explain how a `static variable` works, and why it is important.
 
 ### Stack and heap memory
 Allocating memory refers to the process of reserving a specific amount of memory for use in a program.
