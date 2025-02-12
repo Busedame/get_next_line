@@ -43,6 +43,7 @@ void	example_heap(void)
 In `get_next_line()`, we want to read from a file, one line at a time.
 
 The function is structured in the following steps:
+```bash
 1. `get_next_line()` uses the `read()` function to read from the file. It reads
 `BUFFER_SIZE` bytes at a time (the size is defined in `get_next_line.h`), and
 stores the bytes in `buffer`.
@@ -66,7 +67,7 @@ ended.
 			break ;
 	}
 ```
-3. Since the `BUFFER_SIZE` is a set size, and the lines may vary in length, the
+3. Since the `BUFFER_SIZE` is a varying size, and the lines may vary in length, the
 `read()` function may sometimes read past the `\n` character. For example:
 ```bash
 	What the file contains:
@@ -74,7 +75,7 @@ ended.
 	How are you?
 ```
 ```bash
-	An example of buffer size and a `read()` call.
+	An example of buffer size and a `read()` call:
 	BUFFER_SIZE = 16;
 	bytesread = read(fd, buffer, BUFFER_SIZE);
 ```
@@ -89,20 +90,22 @@ function can't "unread" what has already been read, we need to store the
 belongs to the next line.
 5. The `get_next_line()` function will return "Hello, there!\n" on the first call,
 and then store "Ho" for the next function call. The next time `get_next_line()`
-is called, it will read again:
+is called, it already has "Ho" from last function call -> it reads again using `read()` -> 
+appends "w are you?\n" to "Ho", and it returns the line "How are you?".
 ```bash
 	What the file contains:
 	Hello, there!
 	How are you?
 ```
 ```bash
-	An example of buffer size and a `read()` call.
+	An example of buffer size and a `read()` call:
 	BUFFER_SIZE = 16;
 	bytesread = read(fd, buffer, BUFFER_SIZE);
 ```
 ```bash
 	What is getting stored in the `readnow` variable on second get_next_line() call:
 	"How are you?\n"
+```
 ```
 
 An essential part of my implementation of `ft_printf()` is the `va_start()`, `va_arg()` and `va_end()` macros
