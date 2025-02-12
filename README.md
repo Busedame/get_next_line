@@ -85,9 +85,7 @@ void	example_heap(void)
 }
 ```
 
-### Static variables
-
-In `get_next_line()`, we want to read from a file, one line at a time.
+### How is get_next_line() structured?
 
 The function is structured in the following steps:
 1. `get_next_line()` calls the `read()` function to read from the file. It reads
