@@ -203,13 +203,20 @@ In this example, the output would be:
 	20
 	30
 ```
-Since the variable is now **static**, the memory address and value remains allocated until
+Since the variable is now **static**, it remains allocated until
 **the end of the program**. Now, this becomes very useful for our `get_next_line()`, where
 we want to store the **remainder** from our `read()` function, doesn't it? 😃  
 
-Even though it would technically be possible to create a `get_next_line()` with a remainder
-allocated on the heap, this would require a different structure that would go beyond what is
-allowed by the subject.
+So we know that our remainder needs to be static in order to keep its value between function calls.
+In my `get_next_line()` function, I also dynamically allocate memory using `malloc` for the remainder.
+This means that **the remainder is both static and dynamically allocated**.
+- It is static because it needs to keep its value between function calls.
+- It is dynamic because the amount of bytes stored can vary from function call to function call.  
+
+From reviewing the code in retrospect (on a cold February evening in 2025, a year later), I have discovered that the remainder is not properly getting
+freed each time it gets updated with a new allocation. I have not seen any memory leaks happening, and I am curious about how this actually
+works. I am also curious about if it would be possible to solve this without any dynamic allocation for the remainder. 
+But this remains a mystery for now. 
 
 ---
 
