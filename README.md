@@ -128,16 +128,21 @@ ended.
 	What is getting stored in the `readnow` variable on first get_next_line() call:
 	"Hello, there!\nHo"
 ```
-4. In this example, we have encountered a newline character. But our line is a bit longer
-than expected ("Hello, there!\nHo"). We want the `get_next_line()` function to return "Hello, there!\n",
+4. In this example:
+- We have encountered a newline character. But our line is a bit longer
+than expected ("Hello, there!\nHo"). 
+- We want the `get_next_line()` function to return "Hello, there!\n",
 because that is the first line.  
-Since the `read()` function can't "unread" what has already been read, we need to store the
-**remainder** somewhere. The remainder in this case is "Ho", because this
-belongs to the next line.
+- Since the `read()` function can't "unread" what has already been read, we need to store the
+**remainder** somewhere. 
+- The remainder in this case is "Ho", because this belongs to the next line.
 5. The `get_next_line()` function will return "Hello, there!\n" on the first call,
-and then store "Ho" for the next function call. The next time `get_next_line()`
-is called, it already has "Ho" from last function call -> it reads again using `read()` -> 
-appends "w are you?\n" to "Ho", and it returns the line "How are you?".
+and then store "Ho" for the next function call.  
+The next time `get_next_line()` is called:
+- It already has "Ho" from last function call.
+- It reads again using `read()`. 
+- It appends "w are you?\n" to "Ho".
+- Lastly t returns the line "How are you?".
 ```bash
 	What the file contains:
 	Hello, there!
