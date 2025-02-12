@@ -142,7 +142,7 @@ The next time `get_next_line()` is called:
 - It already has "Ho" from last function call.
 - It reads again using `read()`. 
 - It appends "w are you?\n" to "Ho".
-- Lastly t returns the line "How are you?".
+- Lastly it returns the line "How are you?".
 ```bash
 	What the file contains:
 	Hello, there!
