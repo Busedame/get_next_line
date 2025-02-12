@@ -40,6 +40,8 @@ because this is the next line of the file.
 If we called it for the third time, `get_next_line()` would return `NULL`, because
 the end of file was reached.  
 
+---
+
 `static variables` was a new (and crucial) concept to me while working with this project. To understand the concept of  
 static variables, I will give a short reminder of how stack and heap memory allocation works.
 
