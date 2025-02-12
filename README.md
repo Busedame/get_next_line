@@ -48,7 +48,8 @@ the end of file was reached.
 ## 🔍So how does get_next_line() work?
 
 In order to understand how `get_next_line()` works, we need to wrap our
-heads around `static variables`. In this next part I will:
+heads around `static variables`. But before we get there, we need some introduction!
+In this next part I will:
 1. Take you through the basics of stack and heap memory.
 2. Show you the main logic of `get_next_line()`.
 3. Explain how a `static variable` works, and why it is important.
