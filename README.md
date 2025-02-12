@@ -125,13 +125,12 @@ may sometimes read past the newline character. For example:
 	Content stored in the `readnow` variable after the first `get_next_line()` call:
 	"Hello, there!\nHo"
 ```
-4. In this scenario:
+4. In this first function call:
 - The newline character has been read, but the retrieved data is longer than the expected line: "Hello, there!\nHo".
 - `get_next_line()` should return "Hello, there!\n" as the first line.
 - Since `read()` cannot "unread" data, we need to store the **remainder** somewhere.
 - The remainder here is "Ho", which belongs to the next line.
-5. On the first call, `get_next_line()` returns "Hello, there!\n" and stores "Ho" for the next call.
-On the next function call:
+5. In the next function call:
 - It retrieves "Ho" from the previous call.
 - It reads again using `read()`.
 - "w are you?\n" is appended to "Ho".
