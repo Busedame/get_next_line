@@ -87,7 +87,7 @@ void	example_heap(void)
 
 ### How is get_next_line() structured?
 
-The function is structured in the following steps:
+The main logic is structured in the following steps:
 1. `get_next_line()` calls the `read()` function to read from the file. It reads
 `BUFFER_SIZE` bytes at a time and stores them in `buffer`.
 ```bash
