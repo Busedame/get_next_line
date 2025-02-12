@@ -216,13 +216,13 @@ allowed by the subject.
 `get_next_line()` is by no means perfect.  
 
 One big weakness with the function is the fact that **it returns `NULL` both upon memory allocation failure, 
-AND when `read()` has reached the end of file**. This can be highly confusing.  
+AND if `read()` has reached the end of file**. This can be highly confusing.  
 Although the limitations of the subject made it impossible (as far as I am aware) to handle it in a different way, these could
 have been possible solutions:
 - Solution 1: Return a struct instead of a pointer, containing information on what potentially went wrong.
 - Solution 2: Set an errno value to indicate error.  
 
-Another weakness is **if you want to read only one line from a file, without caring about the rest***. This
+Another weakness is **if you want to read only ONE line from a file, without caring about the rest**. This
 would give `still reachable memory` if not handled, because of the remainder.  
 Even though `still reachables` are not technically considered a memory leak, it makes your `valgrind` report 
 ugly (in my opinion at least).  
@@ -231,7 +231,6 @@ Here are some workarounds:
 the remainder to be freed.
 - Solution 2: Calling `get_next_line()` in a loop until return value is `NULL`, indicating end of file.
 
-2. 
 ## 🧰 **Included Files**  
 - `get_next_line.c` and `get_next_line_utils.c`
 - A `Makefile`.
