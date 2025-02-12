@@ -2,7 +2,8 @@
 
 ## 🚀 **Project Overview**  
 The project involves creating a function that can **read from a file descriptor, and return one line at a time**.  
-It is exceptionally useful for parsing files, and generally good for separating a large chunk of text.  
+It is exceptionally useful for parsing files. It is more memory efficient when dealing with a large file, because
+you store one line at a time, instead of the whole file.
 
 The function is declared like this:
 ```bash
@@ -33,7 +34,7 @@ void	example_stack(void)
 - Used for dynamic allocation with `malloc()`.
 - The memory is manually allocated, and must be freed using the `free()` function.
 - The memory can be accessed outside the function, as long as the address is stored in a pointer.
-- It is dynamic in size.
+- It is dynamic in size, and its size can be based on variables instead of fixed values.
 ```bash
 void	example_heap(void)
 {
