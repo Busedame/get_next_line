@@ -1,33 +1,111 @@
 # 📖 **get_next_line - Reading from a file, line by line!**
 
 ## 🚀 **Project Overview**  
-The project involves creating a function that can read from a file descriptor, and return one line at a time.  
+The project involves creating a function that can **read from a file descriptor, and return one line at a time**.  
 It is exceptionally useful for parsing files, and generally good for separating a large chunk of text.  
 `static variables` was a new concept to me while working with this project. To understand the concept of  
-static variables, we need to understand the difference between stack and heap.  
+static variables, I will give a short reminder of how stack and heap memory allocation works.
 
-#### Stack VS Heap
-When a program is ran, memory is getting allocated, meaning some memory is getting reserved to store the  
-data needed. This allocation can happen either on the stack or the heap.
+#### Stack and heap memory
+Allocating memory refers to the process of reserving a specific amount of memory for use in a program.
+When you allocate memory, you are essentially telling the system that you need a certain amount of memory 
+for your program to use. This memory can then be used to store data, such as variables or data structures.
+There are two main ways of allocating memory, **stack and heap**.
 
-A **stack allocation** is local, and only remains within the function scope. This means that once the function
-finishes, the memory is automatically freed and the values can't be accessed anymore.
-
-In a function like this:
+**Stack allocation:**
+- Used for local variables within functions (they only exist within the function).
+- The memory is automatically allocated (when the variable is declared) and deallocated (when the function exits).
+- It has a fixed size.
+- Example:
 ```bash
-void	stack_allocation_function_1(void)
+void	example_1(void)
 {
 	int	x = 42;
-	printf("%i\n", x);
-}
-
-void	stack_allocation_function_2(void)
-{
-	printf("%i\n", x);
 }
 ```
-**In this example, the first function sets the value 42 to a variable x, but the second
-function can't access it because it only exists within the first function.**
+
+**Heap allocation:**
+- Used for dynamic allocation with `malloc()`.
+- The memory is manually allocated, and must be freed using the `free()` function.
+- The memory can be accessed outside the function, as long as the address is stored in a pointer.
+- It is dynamic in size.
+- Example:
+```bash
+void	example_2(void)
+{
+	int	*x;
+	x = malloc(sizeof(int));
+	*x = 42;
+	free(x);
+}
+```
+
+#### Static variables
+
+In `get_next_line()`, we want to read from a file, one line at a time.
+
+The function is structured in the following steps:
+1. The standard C function `read()` is used to read from the file. It reads
+`BUFFER_SIZE` bytes at a time (the size is defined in `get_next_line.h`), and
+stores the bytes in `buffer`.
+```bash
+	bytesread = read(fd, buffer, BUFFER_SIZE);
+```
+2. The `read()` function is called in a `while`-loop, because it wants to read
+the file until it encounters a `\n` character, indicating that the line has
+ended.
+```bash
+	while (bytesread > 0)
+	{
+		bytesread = read(fd, buffer, BUFFER_SIZE);
+		if (bytesread == -1)
+			return (ft_free(buffer));
+		buffer[bytesread] = '\0';
+		readnow = ft_strjoin(readnow, buffer);
+		if (!readnow)
+			return (NULL);
+		if (ft_strchr_index(readnow, '\n') > -1)
+			break ;
+	}
+```
+3. Since the `BUFFER_SIZE` is a set size, and the lines may vary in length, the
+`read()` function may sometimes read past the `\n` character. For example:
+```bash
+	What the file contains:
+	Hello, there!
+	How are you?
+```
+```bash
+	An example of buffer size and a `read()` call.
+	BUFFER_SIZE = 16;
+	bytesread = read(fd, buffer, BUFFER_SIZE);
+```
+```bash
+	What is getting stored in the `readnow` variable on first get_next_line() call:
+	"Hello, there!\nHo"
+```
+4. In this example, we have encountered a newline character. We want the
+`get_next_line()` function to return "Hello, there!\n". Since the `read()`
+function can't "unread" what has already been read, we need to store the
+**remainder** somewhere. The remainder in this case is "Ho", because this
+belongs to the next line.
+5. The `get_next_line()` function will return "Hello, there!\n" on the first call,
+and then store "Ho" for the next function call. The next time `get_next_line()`
+is called, it will read again:
+```bash
+	What the file contains:
+	Hello, there!
+	How are you?
+```
+```bash
+	An example of buffer size and a `read()` call.
+	BUFFER_SIZE = 16;
+	bytesread = read(fd, buffer, BUFFER_SIZE);
+```
+```bash
+	What is getting stored in the `readnow` variable on second get_next_line() call:
+	"How are you?\n"
+```
 
 An essential part of my implementation of `ft_printf()` is the `va_start()`, `va_arg()` and `va_end()` macros
 from the `stdarg.h` library. They are used for handling variable argument lists in functions.
