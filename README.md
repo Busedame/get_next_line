@@ -3,7 +3,13 @@
 ## 🚀 **Project Overview**  
 The project involves creating a function that can **read from a file descriptor, and return one line at a time**.  
 It is exceptionally useful for parsing files, and generally good for separating a large chunk of text.  
-`static variables` was a new concept to me while working with this project. To understand the concept of  
+
+The function is declared like this:
+```bash
+char	*get_next_line(int fd);
+```
+
+`static variables` was a new (and crucial) concept to me while working with this project. To understand the concept of  
 static variables, I will give a short reminder of how stack and heap memory allocation works.
 
 #### Stack and heap memory
@@ -106,6 +112,60 @@ appends "w are you?\n" to "Ho", and it returns the line "How are you?".
 	What is getting stored in the `readnow` variable on second get_next_line() call:
 	"How are you?\n"
 ```
+
+**Now, how does the static variable come into place?**
+
+As previously mentioned, **stack memory** gets deallocated once the function exits. 
+
+Let's do an example:
+```bash
+void	example_stack(void)
+{
+	int	x = 0;
+	x += 10;
+	printf("%i\n", x);
+}
+
+int	main()
+{
+	example_stack();
+	example_stack();
+	example_stack();
+}
+```
+In this example, the output would be:
+```bash
+	10
+	10
+	10
+```
+
+This happens because **every time the function exits, the memory is deallocated.**
+Now, if we would instead declare a **static variable**, let's take a look at what would happen:
+```bash
+void	example_stack(void)
+{
+	static int	x = 0;
+	x += 10;
+	printf("%i\n", x);
+}
+
+int	main()
+{
+	example_stack();
+	example_stack();
+	example_stack();
+}
+```
+In this example, the output would be:
+```bash
+	10
+	20
+	30
+```
+Since the variable is now **static**, the memory address and value remains allocated until
+**the end of them program**. Now, this becomes very useful for our `get_next_line()`, where
+we want to store the **remainder** from our `read()` function, doesn't it?
 
 An essential part of my implementation of `ft_printf()` is the `va_start()`, `va_arg()` and `va_end()` macros
 from the `stdarg.h` library. They are used for handling variable argument lists in functions.
