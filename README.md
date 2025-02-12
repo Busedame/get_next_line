@@ -82,9 +82,10 @@ ended.
 	What is getting stored in the `readnow` variable on first get_next_line() call:
 	"Hello, there!\nHo"
 ```
-4. In this example, we have encountered a newline character. We want the
-`get_next_line()` function to return "Hello, there!\n". Since the `read()`
-function can't "unread" what has already been read, we need to store the
+4. In this example, we have encountered a newline character. But our line is a bit longer
+than expected ("Hello, there!\nHo"). We want the `get_next_line()` function to return "Hello, there!\n",
+because that is the first line.  
+Since the `read()` function can't "unread" what has already been read, we need to store the
 **remainder** somewhere. The remainder in this case is "Ho", because this
 belongs to the next line.
 5. The `get_next_line()` function will return "Hello, there!\n" on the first call,
