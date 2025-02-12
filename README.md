@@ -90,14 +90,13 @@ void	example_heap(void)
 In `get_next_line()`, we want to read from a file, one line at a time.
 
 The function is structured in the following steps:
-1. `get_next_line()` uses the `read()` function to read from the file. It reads
-`BUFFER_SIZE` bytes at a time and stores the bytes in `buffer`.
+1. `get_next_line()` calls the `read()` function to read from the file. It reads
+`BUFFER_SIZE` bytes at a time and stores them in `buffer`.
 ```bash
 	bytesread = read(fd, buffer, BUFFER_SIZE);
 ```
-2. The `read()` function is called in a `while`-loop, because it wants to read
-the file until it encounters a `\n` character, indicating that the line has
-ended.
+2. The `read()` function is called within a while loop to continue reading until 
+it encounters a newline character (`\n`), signaling the end of a line:
 ```bash
 	while (bytesread > 0)
 	{
@@ -112,49 +111,45 @@ ended.
 			break ;
 	}
 ```
-3. Since the `BUFFER_SIZE` is a varying size, and the lines may vary in length, the
-`read()` function may sometimes read past the `\n` character. For example:
+3. Since `BUFFER_SIZE` varies, and line lengths differ, the `read()` function 
+may sometimes read past the newline character. For example:
 ```bash
 	What the file contains:
 	Hello, there!
 	How are you?
 ```
 ```bash
-	An example of buffer size and a `read()` call:
+	Example of `BUFFER_SIZE` and a `read()` call:
 	BUFFER_SIZE = 16;
 	bytesread = read(fd, buffer, BUFFER_SIZE);
 ```
 ```bash
-	What is getting stored in the `readnow` variable on first get_next_line() call:
+	Content stored in the `readnow` variable after the first `get_next_line()` call:
 	"Hello, there!\nHo"
 ```
-4. In this example:
-- We have encountered a newline character. But our line is a bit longer
-than expected ("Hello, there!\nHo"). 
-- We want the `get_next_line()` function to return "Hello, there!\n",
-because that is the first line.  
-- Since the `read()` function can't "unread" what has already been read, we need to store the
-**remainder** somewhere. 
-- The remainder in this case is "Ho", because this belongs to the next line.
-5. The `get_next_line()` function will return "Hello, there!\n" on the first call,
-and then store "Ho" for the next function call.  
-The next time `get_next_line()` is called:
-- It already has "Ho" from last function call.
-- It reads again using `read()`. 
-- It appends "w are you?\n" to "Ho".
-- Lastly it returns the line "How are you?".
+4. In this scenario:
+- The newline character has been read, but the retrieved data is longer than the expected line: "Hello, there!\nHo".
+- `get_next_line()` should return "Hello, there!\n" as the first line.
+- Since `read()` cannot "unread" data, we need to store the **remainder** somewhere.
+- The remainder here is "Ho", which belongs to the next line.
+5. On the first call, `get_next_line()` returns "Hello, there!\n" and stores "Ho" for the next call.
+On the next function call:
+- It retrieves "Ho" from the previous call.
+- It reads again using `read()`.
+- "w are you?\n" is appended to "Ho".
+- The function returns "How are you?\n".
 ```bash
 	What the file contains:
 	Hello, there!
 	How are you?
 ```
 ```bash
-	An example of buffer size and a `read()` call:
+	Example of `BUFFER_SIZE` and a `read()` call:
 	BUFFER_SIZE = 16;
 	bytesread = read(fd, buffer, BUFFER_SIZE);
 ```
 ```bash
-	What is getting stored in the `readnow` variable on second get_next_line() call:
+	Content stored in the `readnow` variable after the second `get_next_line()` call:
 	"How are you?\n"
 ```
 
