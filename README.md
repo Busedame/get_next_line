@@ -35,7 +35,6 @@ And we get this output:
 Hello, there!
 ```
 
-**In this example:**  
 If we were to call `get_next_line()` again, the output would be "How are you today?",
 because this is the next line of the file.  
 If we called it for the third time, `get_next_line()` would return `NULL`, because
