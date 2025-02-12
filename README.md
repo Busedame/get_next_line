@@ -10,6 +10,37 @@ The function is declared like this:
 char	*get_next_line(int fd);
 ```
 
+Let's take a file (test.txt) that contains this text:
+```bash
+Hello, there!
+How are you today?
+```
+
+We call `get_next_line()` one time:
+```bash
+int	main(void)
+{
+	int		fd;
+	char	*output;
+
+	fd = open("test.txt", O_RDONLY);
+	output = get_next_line(fd);
+	printf("%s", output);
+	free(output);
+}
+```
+
+And we get this output:
+```bash
+Hello, there!
+```
+
+**In this example:  **
+If we were to call `get_next_line()` again, the output would be "How are you today?",
+because this is the next line of the file.  
+If we called it for the third time, `get_next_line()` would return `NULL`, because
+the end of file was reached.  
+
 `static variables` was a new (and crucial) concept to me while working with this project. To understand the concept of  
 static variables, I will give a short reminder of how stack and heap memory allocation works.
 
