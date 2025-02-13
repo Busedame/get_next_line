@@ -123,7 +123,7 @@ may sometimes read past the newline character. For example:
 	bytesread = read(fd, buffer, BUFFER_SIZE);
 ```
 Since 16 bytes was read, and "Hello, there!\n" is 14 bytes -- 2 additional bytes were added to `Buffer`. So after the first `get_next_line()` call, this is stored in the `readnow` variable:  
-	"Hello, there!\nHo"**
+	**"Hello, there!\nHo"**
 - The newline character has been read, but the retrieved data is longer than the expected line: "Hello, there!\nHo".
 - `get_next_line()` should return "Hello, there!\n" as the first line.
 - Since `read()` cannot "unread" data, we need to store the **remainder** somewhere.
@@ -145,7 +145,7 @@ Since 16 bytes was read, and "Hello, there!\n" is 14 bytes -- 2 additional bytes
 	bytesread = read(fd, buffer, BUFFER_SIZE);
 ```
 Content stored in the `readnow` variable after the second `get_next_line()` call:  
-	"How are you?\n"
+	**"How are you?\n"**
 
 ### **Now how does the static variable come into place?**
 
