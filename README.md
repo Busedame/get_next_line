@@ -246,7 +246,8 @@ ugly (in my opinion at least).
 Here are some workarounds:
 - Solution 1: Call the function like this `get_next_line(-1)`, indicating an error with the file descriptor, forcing
 the remainder to be freed.
-- Solution 2: Calling `get_next_line()` in a loop until return value is `NULL`, indicating end of file.
+- Solution 2: Calling `get_next_line()` in a loop until return value is `NULL`, indicating end of file. Alternatively
+creating a function like `free_get_next_line()` for this purpose.
 
 ## 🧰 **Included Files**  
 - `get_next_line.c` and `get_next_line_utils.c`
