@@ -203,6 +203,8 @@ Since the variable is now **static**, it remains allocated until
 **the end of the program**. Now, this becomes very useful for our `get_next_line()`, where
 we want to store the **remainder** from our `read()` function, doesn't it? 😃  
 
+###**In conclusion**
+
 So we know that our remainder needs to be static in order to keep its value between function calls.
 In my `get_next_line()` function, I also dynamically allocate memory using `malloc` for the remainder.
 This means that **the remainder is both static and dynamically allocated**.
