@@ -283,3 +283,5 @@ git clone https://github.com/busedame/get_next_line/ get_next_line && cd get_nex
 
 Simply `#include "get_next_line.h"` in your project, alongside the source files
 from this repo, and you are good to go!
+
+*This project was finished Jan 8th 2024.*
