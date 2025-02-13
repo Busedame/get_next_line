@@ -1,15 +1,14 @@
 # 📖 **get_next_line - Reading from a file, line by line!**
 
 **In this README:**
-1. Project Overview
-- Introduction to stack and heap memory
-- Main logic of `get_next_line()` explained
-- Introduction to static variables
-2. Limitations
-3. Included files
-4. Cloning the repository
-5. How to compile and run
-6. Including `get_next_line` in your project
+1. Introduction to stack and heap memory
+2. Main logic of `get_next_line()` explained
+3. Introduction to static variables
+4. Limitations
+5. Included files
+6. Cloning the repository
+7. How to compile and run
+8. Including `get_next_line` in your project
 
 ## 🚀 **Project Overview**  
 The project involves creating a function that can **read from a file descriptor, and return one line at a time**.  
