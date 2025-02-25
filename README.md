@@ -4,12 +4,12 @@
 1. Included files
 2. Cloning the repository
 3. How to compile and run
-4. Including `get_next_line` in your project
-5. Introduction to the project
-6. Introduction to stack and heap memory
-7. Main logic of `get_next_line()` explained
-8. Introduction to static variables
-9. Limitations
+4. Introduction to the project
+5. Introduction to stack and heap memory
+6. Main logic of `get_next_line()` explained
+7. Introduction to static variables
+8. Limitations
+9. Including `get_next_line` in your project
 
 ## 🧰 **Included Files**  
 - `get_next_line.c` and `get_next_line_utils.c`
@@ -35,11 +35,6 @@ git clone https://github.com/busedame/get_next_line/ get_next_line && cd get_nex
 	```bash
 	./get_next_line
  	```
-
-## 🔗**Including get_next_line in your project**
-
-Simply `#include "get_next_line.h"` in your project, alongside the source files
-from this repo, and you are good to go!
 
 ## 🚀 **Project Overview**  
 The project involves creating a function that can **read from a file descriptor, and return one line at a time**.  
@@ -278,5 +273,12 @@ Here are some workarounds:
 the remainder to be freed.
 - Solution 2: Calling `get_next_line()` in a loop until return value is `NULL`, indicating end of file. Alternatively
 creating a function like `free_get_next_line()` for this purpose.
+
+## 🔗**Including get_next_line in your project**
+
+Simply `#include "get_next_line.h"` in your project, alongside the source files
+from this repo, and you are good to go!
+
+---
 
 *This project was finished Jan 8th 2024.*
