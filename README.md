@@ -11,13 +11,9 @@
 8. Introduction to static variables
 9. Limitations
 
----
-
 ## 🧰 **Included Files**  
 - `get_next_line.c` and `get_next_line_utils.c`
 - A header file.
-
----
 
 ## 🧑‍💻 **Cloning the Repository**
 
@@ -26,7 +22,6 @@ This command will clone the repo, and move you to the right directory:
 ```bash
 git clone https://github.com/busedame/get_next_line/ get_next_line && cd get_next_line
 ```
----
 
 ## 🖥️ **How to Compile and Run**  
 
@@ -40,14 +35,11 @@ git clone https://github.com/busedame/get_next_line/ get_next_line && cd get_nex
 	```bash
 	./get_next_line
  	```
----
 
 ## 🔗**Including get_next_line in your project**
 
 Simply `#include "get_next_line.h"` in your project, alongside the source files
 from this repo, and you are good to go!
-
----
 
 ## 🚀 **Project Overview**  
 The project involves creating a function that can **read from a file descriptor, and return one line at a time**.  
