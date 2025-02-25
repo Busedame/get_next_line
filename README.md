@@ -79,8 +79,6 @@ How are you today?
 If we called it for the third time, `get_next_line()` would return `NULL`, because
 the end of file was reached.  
 
----
-
 ## 🔍So how does get_next_line() work?
 
 In order to understand how `get_next_line()` works, we need to wrap our
@@ -251,8 +249,6 @@ From reviewing the code in retrospect (on a cold February evening in 2025, a yea
 freed each time it gets updated with a new allocation. I have not seen any memory leaks happening, and I am curious about how this actually
 works. I am also curious about if it would be possible to solve this without a static variable, and how this could be done.
 But this remains a mystery for now. 
-
----
 
 ## 🚧**Limitations**
 `get_next_line()` is by no means perfect.  
